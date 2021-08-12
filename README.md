@@ -8,7 +8,7 @@ Plataforma para Entrenar el Pensamiento Computacional (PEPCom)
 
 ## Instalar repositorio
 ```bash
-git clone https://github.com/jose6alejandro/PEPCom.git
+$ git clone https://github.com/jose6alejandro/PEPCom.git
 ```
 ## Ejecutar aplicación
 ```bash
