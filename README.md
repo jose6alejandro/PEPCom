@@ -5,7 +5,7 @@ Plataforma para Entrenar el Pensamiento Computacional (PEPCom)
 - Python 3.6.9
 - Django 3.2.5
 - SQlite3 
-
+- [Appseed](https://appseed.us/admin-dashboards/django-dashboard-atlantis-dark) (Template) 
 ## Instalar repositorio
 ```bash
 $ git clone https://github.com/jose6alejandro/PEPCom.git
@@ -19,9 +19,6 @@ $ python3 manage.py runserver # default port 8000
 http://localhost:8000/accounts/login/
 
 
-## Interfaz
-Este proyecto se basa en el template [Appseed](https://appseed.us/admin-dashboards/django-dashboard-atlantis-dark)
-
-## Capturas
+## Capturas de la aplicación
 Proximamente
 
