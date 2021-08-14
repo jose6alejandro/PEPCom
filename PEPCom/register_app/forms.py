@@ -11,7 +11,7 @@ class Form_Login(forms.Form):
     password = forms.CharField(
         widget=forms.PasswordInput(
             attrs={
-                "placeholder" : "Password",                
+                "placeholder" : "Contraseña",                
                 "class": "form-control"
             }
         ))
