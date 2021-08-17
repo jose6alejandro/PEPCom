@@ -3,54 +3,64 @@ from django.shortcuts import render, HttpResponse
 # Create your views here.
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User
 from django.forms.utils import ErrorList
 from .forms import Form_Login, Form_Register
+from register_app.models import User_Profile
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from register_app.models import User_register
 
-def login(request):
+
+def login_view(request):
    
-   form = Form_Login(request.POST  or None)
-   form1 = Form_Register(request.POST or None)
-   
+   form = Form_Login(request.POST)
+   form1 = Form_Register(request.POST)
    alert = None
-   success = True
+   success = False
 
-   if request.method=='POST':
-
+   if request.method == "POST":
+      
       if form.is_valid():
-         inf_login = form.cleaned_data
-         search_user = User_register.objects.filter(email_user = inf_login['email'],
-             user_password = inf_login['password'])
-         if search_user:
-            return redirect('home')
+         username = form.cleaned_data.get("username")
+         password = form.cleaned_data.get("password")
+         user = authenticate(username=username, password=password)
+         if user is not None:
+            login(request, user)
+            return redirect("home")
+         else:    
+            alert = 'Datos incorrectos, intente de nuevo'    
+      else:
+         alert = 'Error en la validación' 
 
-      if form1.is_valid():
-
+      if form1.is_valid():   
          inf_register = form1.cleaned_data
-         search_email = User_register.objects.filter(email_user = inf_register['email_user'])
-         #search_code = User_register.objects.filter(access_code = inf_register['access_code'])
-         if search_email:
+         
+         username = inf_register["email_user"]
+         search_user = User.objects.filter(username = username)
+         if search_user:
             alert = 'El correo eletrónico ya existe, intente de nuevo'
             success = False
          else:
             alert = 'Registro exitoso, ahora puede iniciar sesión'
             success = True  
-            save_register = User_register(first_name=inf_register['first_name'], last_name=inf_register['last_name'],
-               email_user=inf_register['email_user'], user_password=inf_register['user_password'], 
-               birthday_date=inf_register['birthday_date'], access_code=inf_register['access_code'],
-               user_role=inf_register['user_role'] )
-            save_register.save()
+            user = User.objects.create_user(username, inf_register["email_user"], 
+                                          inf_register["user_password"],
+                                          first_name = inf_register["first_name"],
+                                          last_name=inf_register["last_name"])
+            user.save()
+            user_add = User_Profile.objects.create(user=user, birthday_date = inf_register['birthday_date'],
+               access_code = inf_register['access_code'], user_role = inf_register['user_role'])  
+            user_add.save()
+            #print(user.user_profile_set.all())
       else:
          alert = 'Datos invalidos, intente de nuevo'
          success = False  
-      
-      form1 = Form_Register()
 
-   return render(request,'accounts/login.html', {"form": form,"alert": alert, "success": success, "form1": form1})
+      form1 = Form_Register()   
+   return render(request, "accounts/login.html", {"form": form, "form1": form1, 
+               "alert" : alert, "success": success})
 
-@login_required
+
+@login_required()
 def home(request):
    return render(request, 'home.html')  
       

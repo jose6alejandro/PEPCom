@@ -1,7 +1,7 @@
 
 {% extends "layouts/base.html" %}
 
-{% block title %} Login {% endblock title %}
+{% block title %} Home {% endblock title %}
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -15,6 +15,7 @@
 				<p class="text-left h3">
 					Siempre es buen momento para practicar.
 				</p>
+				<a href="{% url 'logout' %}"><i class="fa fa power -off"></i> Cerrar cesión</a>
 			</div>
 
 {% endblock content %}

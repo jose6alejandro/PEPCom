@@ -102,8 +102,8 @@
 
                     </div>
 		                <div class="card">
-								<form method="post" action="">
- 											{% csrf_token %}
+								<form method="post" action = "{% url 'login' %}">
+ 									{% csrf_token %}
 			                        <div class="card-body" >
 			                            <div>
 			                                        <div class="input-group mb-3">
@@ -112,8 +112,8 @@
 			                                                    <i class="icon-user"></i>
 			                                                </span>
 			                                            </div>
-			                                            {{ form.email }}
-												
+			                                             <!--<input type="text" class="form-control" placeholder="Usuario" name="username">-->
+														{{ form.username }}
 			                                        </div>
 			                                    </div>
 
@@ -124,6 +124,7 @@
 			                                                   <i class="icon-lock"></i>
 			                                                </span>
 			                                            </div>	
+														<!--<input type="password" class="form-control" placeholder="Contraseña" name="password">-->
 														{{ form.password }}
 			                                        </div>
 			                                    </div>
