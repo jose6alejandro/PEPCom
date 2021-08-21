@@ -8,7 +8,6 @@
 
 {% block content %}
 
-
 </script>
 <!-- Modal Register-->
 <div class="modal fade " id="register" tabindex="-1" role="dialog" aria-labelledby="register_modal" aria-hidden="true">
@@ -31,13 +30,20 @@
 					<div class="form-group col-md-6">
 						{{ form1.last_name }}
 					</div>
-				  </div>
+				</div>
 				   
 				   <div class="form-group">
 				   		{{ form1.email_user }}
 				   </div>
-				  	<div class="form-group">
+				  	<div class="form-row form-group ">
+				  		<div class="form-group col-md-10">
 				      	{{ form1.user_password }}
+				      	</div>
+						<div class="input-group-append form-group col-md-2">
+            				<button id="show_password" class="btn btn-outline-dark" type="button" onclick="showPassword()"> 
+            					<span class="fa fa-eye-slash icon text-white" ></span> 
+            				</button>
+          				</div>				      	
 				   </div>
 					
 					<div class="form-row form-group">
@@ -112,7 +118,6 @@
 			                                                    <i class="icon-user"></i>
 			                                                </span>
 			                                            </div>
-			                                             <!--<input type="text" class="form-control" placeholder="Usuario" name="username">-->
 														{{ form.username }}
 			                                        </div>
 			                                    </div>
@@ -124,7 +129,6 @@
 			                                                   <i class="icon-lock"></i>
 			                                                </span>
 			                                            </div>	
-														<!--<input type="password" class="form-control" placeholder="Contraseña" name="password">-->
 														{{ form.password }}
 			                                        </div>
 			                                    </div>
@@ -143,12 +147,11 @@
 	</tr>
 </table>
 
+{% include 'includes/footer.html' %}
+
 {% endblock content %}
 
 <!-- Specific JS goes HERE -->
 
-{% block javascripts %}{% endblock javascripts %}
+{% block javascripts %} {% endblock javascripts %}
 
-<script>
-
-</script>

@@ -1,24 +1,32 @@
-
 {% extends "layouts/base.html" %}
 
 {% block title %} Home {% endblock title %}
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
-
 {% block content %}
+	<div class="wrapper">
 
-			<div class="col-lg-8">
-		      	<h1 class="text-white display-5">
-		      		<strong>Bienvenido, proximamente disponible</strong>		
-				</h1>
-				<p class="text-left h3">
-					Siempre es buen momento para practicar.
-				</p>
-				<a href="{% url 'logout' %}"><i class="fa fa power -off"></i> Cerrar cesión</a>
+        
+		{% include 'includes/navigation.html' %}
+        {% include 'includes/sidebar.html' %}
+
+		<div class="main-panel">
+			<div class="content">
+			<div class="page-inner">
+			<div class="page-header">
+				<h1>Proximamente</h1>
 			</div>
+			</div>
+
+		{% include 'includes/footer.html' %}
+		</div>
+	
+	</div>
 
 {% endblock content %}
 
+
+{% include 'includes/scripts.html' %}
 <!-- Specific JS goes HERE -->
 {% block javascripts %}{% endblock javascripts %}

@@ -42,7 +42,8 @@ class Form_Register(forms.Form):
         widget=forms.PasswordInput(
             attrs={
                 "placeholder" : "Contraseña",                
-                "class": "form-control"
+                "class": "form-control", 
+                "id":"txtPassword"
             }
         ))
     access_code = forms.CharField(
@@ -55,7 +56,7 @@ class Form_Register(forms.Form):
     birthday_date = forms.DateField(
         widget=forms.DateInput(
             format='%d-%m-%Y', 
-            attrs={"placeholder" : "Fecha de nacimiento (día-mes-año)", "class": "form-control", 
+            attrs={"placeholder" : "Fecha de nacimiento (formato: día-mes-año)", "class": "form-control", 
                     "title":"Por favor introduzca en el formato correcto"}),
             input_formats=('%d-%m-%Y',)
         )
