@@ -1,0 +1,130 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Gestionar problemas {% endblock title %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+	<div class="wrapper">
+
+		{% include 'includes/navigation.html' %}
+	    {% include 'includes/sidebar.html' %}
+
+		<div class="main-panel">
+			<div class="content">
+				<div class="page-inner">
+				<div class="page-header">
+				<div class="content">
+					<div class="page-inner">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title">Agregar un problema</div>
+									</div>
+									<div class="card-body">
+										<form method="post" action="" enctype="multipart/form-data">
+											{% csrf_token %}
+
+											<div class="row">
+												<div class="col-md-6 col-lg-7">
+													<div class="form-group" >
+														<label >Nombre</label>
+
+															{{ form.name }}
+													</div>
+													<div class="form-group">
+														<label >Pregunta</label>
+
+															{{ form.question }}
+													</div>										
+													<div class="form-group">
+														<label >Opciones</label>
+
+															{{ form.correct_option }}
+															{{ form.distractor1 }}
+															{{ form.distractor2 }}
+															{{ form.distractor3 }}
+														
+														<small id="Help" class="form-text text-muted">
+														Las opciones se mostrarán aleatoriamente</small>
+													</div>
+
+													<div class="form-group">
+														<label >Explicación</label>
+
+															{{ form.explanation }}
+
+														<small id="Help2" class="form-text text-muted">
+														Máximo 250 caracteres</small>											
+													</div>
+													
+												</div>
+												<div class="col-md-6 col-lg-5">				
+													
+													<div class="form-group">
+														<label>Agregue una imagen</label>
+
+															{{ form.image }}
+
+														<small id="Help3" class="form-text text-muted">
+														Se mostrará antes de la pregunta</small>	
+													</div> 
+													
+													<div class="form-group">
+														<label class="form-label">Habilidades</label>
+														<div class="selectgroup selectgroup-pills">
+
+															<label class="selectgroup-item">
+																{{ form.abstraction }}
+																<span class="selectgroup-button">Abstracción</span>
+															</label>
+															<label class="selectgroup-item">
+																{{ form.decomposition }}
+																<span class="selectgroup-button">Descomposición</span>
+															</label>
+															<label class="selectgroup-item">
+																{{ form.algorithms }}
+																<span class="selectgroup-button">Pensamiento algorítmico</span>
+															</label>
+															<label class="selectgroup-item">
+																{{ form.generalization }}
+																<span class="selectgroup-button">Generalización</span>
+															</label>
+															<label class="selectgroup-item">
+																{{ form.evaluation }}
+																<span class="selectgroup-button">Evaluación</span>
+															</label>
+
+														</div>
+													</div>
+
+												</div>
+											</div>
+											<div class="card-action">
+												<button type="submit" class="btn btn-success btn-lg float-left">Guardar</button>
+											</div>
+										</form>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				</div>
+				</div>
+
+			{% include 'includes/footer.html' %}
+			</div>
+		</div>
+
+	</div>
+
+{% endblock content %}
+
+
+{% include 'includes/scripts.html' %}
+<!-- Specific JS goes HERE -->
+{% block javascripts %}{% endblock javascripts %}

@@ -13,7 +13,13 @@
 
 	<!-- Fonts and icons -->
 	<script src="/static/assets/js/plugin/webfont/webfont.min.js"></script>
-	<script>
+
+	<!-- Sweet Alert -->
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-borderless/borderless.css" rel="stylesheet">
+	
+
+	<script> 
 		WebFont.load({
 			google: {"families":["Lato:300,400,700,900"]},
 			custom: {"families":["Flaticon", "Font Awesome 7 Solid", "Font Awesome 7 Regular", "Font Awesome 7 Brands", "simple-line-icons"], 
@@ -39,6 +45,20 @@
 
 		<div>
 			{% block content %}{% endblock content %}
+
+			{% if messages %}
+				{% for message in messages%}
+				    <script type="text/javascript">
+				            Swal.fire({
+				                "title": "{{message}}",
+				                "icon": "success",
+				                "iconColor": "#31ce36",
+				                "confirmButtonColor": "#31ce36"
+				            })
+				    </script>							   		
+				{% endfor %}
+			{% endif %}	
+
 		</div>
 
 	{% include 'includes/scripts.html' %}
