@@ -5,6 +5,7 @@ Plataforma para Entrenar el Pensamiento Computacional (PEPCom)
 - Python 3.6.9
 - Django 3.2.5
 - SQlite3 
+- sweetalert2
 - [Appseed](https://appseed.us/admin-dashboards/django-dashboard-atlantis-dark) (Template) 
 ## Instalar repositorio
 ```bash
