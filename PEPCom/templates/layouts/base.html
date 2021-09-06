@@ -48,17 +48,27 @@
 
 			{% if messages %}
 				{% for message in messages%}
-				    <script type="text/javascript">
-				            Swal.fire({
-				                "title": "{{message}}",
-				                "icon": "success",
-				                "iconColor": "#31ce36",
-				                "confirmButtonColor": "#31ce36"
-				            })
-				    </script>							   		
+					{% if message.tags == "success" %}
+					    <script type="text/javascript">
+					            Swal.fire({
+					                "title": "{{message}}",
+					                "icon": "{{message.tags}}",
+					                "iconColor": "#31ce36",
+					                "confirmButtonColor": "#31ce36"
+					            })
+					    </script>
+					{% else %}
+					    <script type="text/javascript">
+					            Swal.fire({
+					                "title": "{{message}}",
+					                "icon": "{{message.tags}}",
+					                "iconColor": "#f25961",
+					                "confirmButtonColor": "#f25961"
+					            })
+					    </script>					
+				    {% endif %}								   		
 				{% endfor %}
 			{% endif %}	
-
 		</div>
 
 	{% include 'includes/scripts.html' %}
@@ -68,3 +78,5 @@
 
 </body>
 </html>
+
+#f25961

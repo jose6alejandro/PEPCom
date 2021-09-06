@@ -10,14 +10,14 @@ class User_Create_Problem(models.Model):
 
    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
 
-   name = models.CharField(max_length=40)
+   name = models.CharField(max_length=60)
 
-   question = models.CharField(max_length=50)
+   question = models.CharField(max_length=100)
 
-   correct_option = models.CharField(max_length=50)
-   distractor1 = models.CharField(max_length=50)
-   distractor2 = models.CharField(max_length=50)
-   distractor3 = models.CharField(max_length=50)
+   correct_option = models.CharField(max_length=70)
+   distractor1 = models.CharField(max_length=70)
+   distractor2 = models.CharField(max_length=70)
+   distractor3 = models.CharField(max_length=70)
 
    explanation = models.CharField(max_length=250)
 

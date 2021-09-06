@@ -88,6 +88,9 @@ def login_view(request):
                "success": success})
 
 
+def redirect_home(request):
+   return redirect("home") 
+
 @login_required()
 def home(request):
    return render(request, 'home.html')  

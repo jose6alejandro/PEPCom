@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^logout/$', LogoutView.as_view(template_name='accounts/login.html'), name="logout"),
     path('accounts/login/', views.login_view, name="login"),
     path('home/', login_required(views.home), name="home"),
+    path('', views.redirect_home, name="redirect_home"),
 ]
