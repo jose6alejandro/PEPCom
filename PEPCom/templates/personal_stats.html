@@ -1,0 +1,165 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Inicio {% endblock title %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+{% block content %}
+	<div class="wrapper">
+
+        
+		{% include 'includes/navigation.html' %}
+        {% include 'includes/sidebar.html' %}
+
+		<div class="main-panel">
+			<div class="content">
+			<div class="page-inner">
+			<div class="page-header">
+				<div class="col-md-12">
+					<div class="card">
+						<div class="card-header">
+							<div class="card-title">Mis estadisticas</div>
+						</div>
+						<div class="card-body">
+
+							<div class="row">
+								<div class="col-md-6 col-lg-6">
+									<div class="card">
+										<div class="card-header">
+											<div class="card-title">Dominio de habilidades</div>
+										</div>
+										<div class="card-body">
+											<div class="chart-container">
+												<canvas id="skillsChart" style="width: 50%; height: 50%"></canvas>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-6">
+									<div class="card">
+										<div class="card-header">
+											<div class="card-title">Rendimiento personal</div>
+										</div>
+										<div class="card-body">
+											<div class="chart-container">
+												<canvas id="performanceChart"></canvas>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="table-responsive">
+									<table class="table table-hover">
+										<thead>
+											<tr>
+												<th scope="col"> </th>
+												<th scope="col"> </th>
+												<th scope="col"> </th>
+											</tr>
+										</thead>
+											<tbody>
+												<tr class="text-center">
+													<td>
+														<i class="fas fa-trophy"></i> 0
+													</td>
+													<td>
+														José Alejandro Castro
+													</td>
+													<td>
+														última conexion: None		
+													</td>	
+												</tr>
+											</tbody>
+									</table>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+
+		{% include 'includes/footer.html' %}
+		</div>
+	
+	</div>
+
+{% endblock content %}
+
+
+{% include 'includes/scripts.html' %}
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+	<!-- Atlantis DEMO methods, don't include it in your project! -->
+	<script src="/static/assets/js/setting-demo2.js"></script>
+	<script>
+		var performanceChart = document.getElementById('performanceChart').getContext('2d'),
+		skillsChart = document.getElementById('skillsChart').getContext('2d')	
+
+		var barChart = new Chart(performanceChart, {
+			type: 'bar',
+			data: {
+				labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+				datasets : [{
+					label: "Porcentaje de rendimiento",
+					backgroundColor: '#95D11D',
+					borderColor: '#4F9001',
+					data: [20, 25, 90, 50, 40, 60, 40, 60, 70, 80, 10, 0],
+				}],
+			},
+			options: {
+				responsive: true, 
+				maintainAspectRatio: false,
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero:true
+						}
+					}]
+				},
+			}
+		});
+
+		var pieChart = new Chart(skillsChart, {
+			type: 'pie',
+			data: {
+				datasets: [{
+					data: ['40', 5, 20, 25, 10], 
+					backgroundColor :["#003f5c","#58508d","#bc5090","#ff6361" ,"#ffa600"],
+					borderWidth: 0
+				}],
+				labels: ['Abstracción', 'Descomposición', 'Pensamiento algorítmico','Generalización', 'Evaluación'] 
+			},
+			options : {
+				responsive: true, 
+				maintainAspectRatio: false,
+				legend: {
+					position : 'bottom',
+					labels : {
+						fontColor: 'rgb(154, 154, 154)',
+						fontSize: 11,
+						usePointStyle : true,
+						padding: 20
+					}
+				},
+				pieceLabel: {
+					render: 'percentage',
+					fontColor: 'white',
+					fontSize: 14,
+					position: 'outside'
+				},
+				tooltips: false,
+				layout: {
+					padding: {
+						left: 5,
+						right: 5,
+						top: 5,
+						bottom: 5
+					}
+				}
+			}
+		})
+	</script>
+{% endblock javascripts %}

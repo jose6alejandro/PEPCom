@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'register_app',
     'crud_problems_app',
-    'training_app',    
+    'training_app', 
+    'statistics_app',   
 ]
 
 
