@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 
 # Create your views here.
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from .forms import Form_Create_problem
 from django.contrib.auth.models import User
 from crud_problems_app.models import User_Create_Problem
@@ -12,8 +12,10 @@ from distutils import util
 import os
 from django.conf import settings
 from django.contrib import messages
+from register_app import views
 
 @login_required()
+@user_passes_test(views.check_not, login_url= '/home/')
 def read_problems(request):
    info_problems = User_Create_Problem.objects.filter(user_id=request.user.id)
 
@@ -21,6 +23,7 @@ def read_problems(request):
 
 
 @login_required()
+@user_passes_test(views.check_not, login_url= '/home/')
 def create_problems(request):
 
    data = {
@@ -45,6 +48,7 @@ def create_problems(request):
 
 
 @login_required()
+@user_passes_test(views.check_not, login_url= '/home/')
 def update_problems(request, id):
    
    id_problem = get_object_or_404(User_Create_Problem, id=id)
@@ -74,6 +78,7 @@ def update_problems(request, id):
    return render(request, 'update.html', data) 
 
 @login_required()
+@user_passes_test(views.check_not, login_url= '/home/')
 def delete_problems(request, id):
    
    id_problem = get_object_or_404(User_Create_Problem, id=id)

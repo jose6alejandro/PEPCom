@@ -28,6 +28,7 @@ SECRET_KEY = 'django-insecure-bgxdc#6r(bebncxuqps9o#4i8+6ah0)lm%&vjz*)4b(05qu7-=
 DEBUG = True
 
 ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ['pepcom.pythonanywhere.com']
 
 DATE_INPUT_FORMATS = (
     '%d-%m-%Y',  # '06-05-2021'
@@ -65,7 +66,7 @@ ROOT_URLCONF = 'PEPCom.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates/'],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -116,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'es'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Etc/GMT+4'
 
 USE_I18N = True
 

@@ -1,0 +1,202 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Estadísticas {% endblock title %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+{% block content %}
+	<div class="wrapper">
+
+        
+		{% include 'includes/navigation.html' %}
+        {% include 'includes/sidebar.html' %}
+
+		<div class="main-panel">
+			<div class="content">
+			<div class="page-inner">
+			<div class="page-header">
+				<div class="col-md-12">
+					<div class="card">
+						<div class="card-header">
+							<div class="card-title">{{title}}</div>
+						</div>
+						<div class="card-body">
+
+							<div class="row">
+								<div class="col-md-6 col-lg-6">
+									<div class="card">
+										<div class="card-header">
+											<div class="card-title">Dominio de habilidades</div>
+										</div>
+										<div class="card-body">
+											<div class="chart-container">
+												<canvas id="skillsChart" style="width: 50%; height: 50%"></canvas>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-6">
+									<div class="card">
+										<div class="card-header">
+											<div class="card-title">Rendimiento {{year}}</div>
+										</div>
+										<div class="card-body">
+											<div class="chart-container">
+												<canvas id="performanceChart"></canvas>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="container-fluid">
+								<div class="collapse" id="search-nav">
+									<form class="navbar-left navbar-form nav-search mr-md-3" method="GET">
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<button type="submit" class="btn btn-search pr-1">
+													<i class="fa fa-search search-icon"></i>
+												</button>
+											</div>
+											<input type="text" placeholder="Buscar correo electrónico" class="form-control text-dark" name="search">
+										</div>
+									</form>
+								</div>	
+								</div>
+								<div class="card-body table-responsive">
+									<table class="table table-hover">
+										<thead >
+											<tr>
+												<th scope="col">Nombre</th>
+												<th scope="col">Correo electrónico</th>
+												<th scope="col">Fecha de nacimiento</th>
+												<th scope="col">Puntuación</th>
+											</tr>
+										</thead>
+											<tbody>
+
+												{% for student in students %}
+													<tr>
+
+														<td>
+															<a  class="text-white" style="text-decoration:none" title="Abrir" href="{% url 'stats_view' student.user.id %}">
+															<i class="fas fa-hand-point-right fa-2x">&nbsp; &nbsp; </i>
+															</a>
+															{{student.user.first_name}} 
+															{{student.user.last_name}}																																						
+														</td>	
+		
+														<td>
+															{{student.user.email}} 
+														</td>
+														<td>
+															{{student.birthday_date}} 
+														</td>
+
+														<td>
+															<i class="fas fa-trophy"></i> &nbsp; 
+															{{student.user.my_skills_set.get.score}}
+														</td>
+																												
+													</tr>
+												{% endfor %}
+
+											</tbody>
+									</table>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+
+		{% include 'includes/footer.html' %}
+		</div>
+	
+	</div>
+
+{% endblock content %}
+
+
+{% include 'includes/scripts.html' %}
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+	<!-- Atlantis DEMO methods, don't include it in your project! -->
+	<script src="/static/assets/js/setting-demo2.js"></script>
+	<script>
+		var performanceChart = document.getElementById('performanceChart').getContext('2d'),
+		skillsChart = document.getElementById('skillsChart').getContext('2d')	
+
+		var barChart = new Chart(performanceChart, {
+			type: 'bar',
+			data: {
+				labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+				datasets : [{
+					label: "Porcentaje de rendimiento",
+					backgroundColor: '#95D11D',
+					borderColor: '#4F9001',
+					data: ['{{performance.0}}', '{{performance.1}}', '{{performance.2}}', 
+							'{{performance.3}}','{{performance.4}}', '{{performance.5}}', 
+						 	'{{performance.6}}', '{{performance.7}}', '{{performance.8}}',
+							'{{performance.9}}','{{performance.10}}', '{{performance.11}}',],
+				}],
+			},
+			options: {
+				responsive: true, 
+				maintainAspectRatio: false,
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero:true
+						}
+					}]
+				},
+			}
+		});
+
+		var pieChart = new Chart(skillsChart, {
+			type: 'pie',
+			data: {
+				datasets: [{
+					data: [('{{skill.0}}'/'{{total}}')*100,
+							('{{skill.1}}'/'{{total}}')*100,
+							('{{skill.2}}'/'{{total}}')*100,
+							('{{skill.3}}'/'{{total}}')*100, 
+							('{{skill.4}}'/'{{total}}')*100,], 
+
+					backgroundColor :["#003f5c","#58508d","#bc5090","#ff6361" ,"#ffa600"],
+					borderWidth: 0
+				}],
+				labels: ['Abstracción', 'Descomposición', 'Pensamiento algorítmico','Generalización', 'Evaluación'] 
+			},
+			options : {
+				responsive: true, 
+				maintainAspectRatio: false,
+				legend: {
+					position : 'bottom',
+					labels : {
+						fontColor: 'rgb(154, 154, 154)',
+						fontSize: 11,
+						usePointStyle : true,
+						padding: 20
+					}
+				},
+				pieceLabel: {
+					render: 'percentage',
+					fontColor: 'white',
+					fontSize: 14,
+					position: 'outside'
+				},
+				tooltips: false,
+				layout: {
+					padding: {
+						left: 5,
+						right: 5,
+						top: 5,
+						bottom: 5
+					}
+				}
+			}
+		})
+	</script>
+{% endblock javascripts %}

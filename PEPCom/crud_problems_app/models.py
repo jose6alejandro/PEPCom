@@ -12,7 +12,7 @@ class User_Create_Problem(models.Model):
 
    name = models.CharField(max_length=60)
 
-   question = models.CharField(max_length=100)
+   question = models.CharField(max_length=200)
 
    correct_option = models.CharField(max_length=70)
    distractor1 = models.CharField(max_length=70)

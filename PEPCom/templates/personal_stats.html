@@ -1,6 +1,6 @@
 {% extends "layouts/base.html" %}
 
-{% block title %} Inicio {% endblock title %}
+{% block title %} Estadísticas {% endblock title %}
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -18,7 +18,7 @@
 				<div class="col-md-12">
 					<div class="card">
 						<div class="card-header">
-							<div class="card-title">Mis estadisticas</div>
+							<div class="card-title">{{title}}</div>
 						</div>
 						<div class="card-body">
 
@@ -38,7 +38,7 @@
 								<div class="col-md-6 col-lg-6">
 									<div class="card">
 										<div class="card-header">
-											<div class="card-title">Rendimiento personal</div>
+											<div class="card-title">Rendimiento personal {{year}}</div>
 										</div>
 										<div class="card-body">
 											<div class="chart-container">
@@ -60,13 +60,13 @@
 											<tbody>
 												<tr class="text-center">
 													<td>
-														<i class="fas fa-trophy"></i> 0
+														<p><i class="fas fa-trophy"></i> &nbsp; {{skill.score}}</p>
 													</td>
 													<td>
-														José Alejandro Castro
+														<p>{{skill.user.first_name}} {{skill.user.last_name}}</p>
 													</td>
 													<td>
-														última conexion: None		
+														<p>Última conexión: &nbsp; {{skill.user.last_login}}</p>	
 													</td>	
 												</tr>
 											</tbody>
@@ -106,7 +106,10 @@
 					label: "Porcentaje de rendimiento",
 					backgroundColor: '#95D11D',
 					borderColor: '#4F9001',
-					data: [20, 25, 90, 50, 40, 60, 40, 60, 70, 80, 10, 0],
+					data: ['{{performance.january}}', '{{performance.february}}', '{{performance.march}}', 
+							'{{performance.april}}', '{{performance.may}}', '{{performance.june}}', 
+						 	'{{performance.july}}', '{{performance.august}}', '{{performance.september}}',
+							'{{performance.october}}', '{{performance.november}}', '{{performance.december}}'],
 				}],
 			},
 			options: {
@@ -126,7 +129,11 @@
 			type: 'pie',
 			data: {
 				datasets: [{
-					data: ['40', 5, 20, 25, 10], 
+					data: [('{{skill.abstraction}}'/'{{total}}') * 100,
+							('{{skill.decomposition}}'/'{{total}}') * 100, 
+							('{{skill.algorithms}}'/'{{total}}') * 100, 
+							('{{skill.generalization}}'/'{{total}}') * 100, 
+							('{{skill.evaluation}}'/'{{total}}') * 100], 
 					backgroundColor :["#003f5c","#58508d","#bc5090","#ff6361" ,"#ffa600"],
 					borderWidth: 0
 				}],

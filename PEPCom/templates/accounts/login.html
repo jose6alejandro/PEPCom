@@ -8,7 +8,7 @@
 
 {% block content %}
 
-</script>
+
 <!-- Modal Register-->
 <div class="modal fade " id="register" tabindex="-1" role="dialog" aria-labelledby="register_modal" aria-hidden="true">
   <div class="modal-dialog " role="document">
@@ -23,7 +23,6 @@
       		<form id="modalform" form method="post" action="">
       			{% csrf_token %}
       			<div class="form-row form-group ">
-
 					<div class="form-group col-md-6">
 						{{ form1.first_name }}
 					</div>
@@ -32,115 +31,103 @@
 					</div>
 				</div>
 				   
-				   <div class="form-group">
-				   		{{ form1.email_user }}
-				   </div>
-				  	<div class="form-row form-group ">
-				  		<div class="form-group col-md-10">
+				<div class="form-group">
+				   	{{ form1.email_user }}
+				</div>
+
+				<div class="form-row form-group ">
+				  	<div class="form-group col-md-10">
 				      	{{ form1.user_password }}
-				      	</div>
-						<div class="input-group-append form-group col-md-2">
-            				<button id="show_password" class="btn btn-outline-dark" type="button" onclick="showPassword()"> 
-            					<span class="fa fa-eye-slash icon text-white" ></span> 
-            				</button>
-          				</div>				      	
-				   </div>
+				    </div>
+					<div class="input-group-append form-group col-md-2">
+            			<button id="show_password" class="btn btn-outline-dark" type="button" onclick="showPassword()"> 
+            				<span class="fa fa-eye-slash icon text-white" ></span> 
+            			</button>
+          			</div>				      	
+				</div>
 					
-					<div class="form-row form-group">
-						<div class="form-group col-md-12">
-				      		{{ form1.birthday_date}}
-				    	</div>
-					</div>
-					<div>
-					</div>
-					<div class="form-row form-group">
-						<div class="form-group col-md-5">
-							{{ form1.user_role}}
-				    	</div>
-				    	<div class="form-group col-md-5">
-				      		{{ form1.access_code }}
-				    	</div>
-				    	<div class="form-group col-md-1">
-				    		<button type="button" class="btn btn-icon btn-round btn-light btn-xs" data-toggle="tooltip" data-placement="right" title="Si eres profesor, debes crear un código. Si eres estudiante, agrega el mismo código de tú profesor.">
-							<i class="fa fa-info"></i>
-							</button>
-				    	</div>	
-					</div>
-			      <div class="modal-footer border-top border-dark col-md-12">
-			      	<button type="submit" class="btn btn-success btn-lg float-right btn-round" id="btn-register" >Registrarte</button>
-			      </div>
+				<div class="form-row form-group">
+					<div class="form-group col-md-12">
+				      	{{ form1.birthday_date}}
+				    </div>
+				</div>
+				<div class="form-row form-group">
+					<div class="form-group col-md-5">
+						{{ form1.user_role}}
+				    </div>
+				    <div class="form-group col-md-5">
+				      	{{ form1.access_code }}
+				   	</div>
+				    <div class="form-group col-md-1">
+				    	<button type="button" class="btn btn-icon btn-round btn-light btn-xs" data-toggle="tooltip" data-placement="right" title="Si eres profesor, debes crear un código. Si eres estudiante, agrega el mismo código de tú profesor.">
+						<i class="fa fa-info"></i>
+						</button>
+				    </div>	
+				</div>
+
+			    <div class="modal-footer border-top border-dark col-md-12">
+			    	<button type="submit" class="btn btn-success btn-lg float-right btn-round" id="btn-register" >Registrarte</button>
+			    </div>
 
       		</form>
       </div>
-
     </div>
   </div>
 </div>
 
-	<table class="container-fluid">
+<table class=" card-body container-fluid">
 			
-		<tr>
-			<td>
-				<div class="col-lg-8">
-		      	<h1 class="text-white display-3">
-		      		<strong>PEPCom</strong>		
-					</h1>
-					<p class="text-left h3">
-						PEPCom es una herramienta para entrenar tus habilidades de Pensamiento Computacional.
-					</p>
-				</div>
-			</td>
-			<td>
-		    <div class="page-inner">
+	<tr>
+		<td>
+			<div class="col-lg-8">
+			    <h1 class="text-white display-3">
+			      	<strong>PEPCom</strong>		
+				</h1>
+				<p class="text-left h3">
+					PEPCom es una herramienta para entrenar tus habilidades de Pensamiento Computacional.
+				</p>
+			</div>
+		</td>
 
-		        <div >
-		        	<div class="card-title">
-
-                        {% if alert %}
-                        	{% if success %}
-                           		<span class="text-success">{{ alert | safe }}</span>
-                           	{% else %}
-                           		<span class="text-danger">{{ alert | safe }}</span>
-                           	{% endif %}
-                        {% else %}
-                        	<span class="text-primary"> </span>
-                        {% endif %}
-
-                    </div>
-		                <div class="card">
-								<form method="post" action = "{% url 'login' %}">
+		<td>
+		    <div class="page-inner" class="col-lg-4">
+		        <div>
+		            <div class="card">
+						<form method="post" action = "{% url 'login' %}">
  									{% csrf_token %}
-			                        <div class="card-body" >
-			                            <div>
-			                                        <div class="input-group mb-3">
-			                                            <div class="input-group-prepend">
-			                                                <span class="input-group-text">
-			                                                    <i class="icon-user"></i>
-			                                                </span>
-			                                            </div>
-														{{ form.username }}
-			                                        </div>
-			                                    </div>
 
-			                                    <div>
-			                                        <div class="input-group mb-3">
-			                                            <div class="input-group-prepend">
-			                                                <span class="input-group-text">
-			                                                   <i class="icon-lock"></i>
-			                                                </span>
-			                                            </div>	
-														{{ form.password }}
-			                                        </div>
-			                                    </div>
+			                <div class="card-body" >
+			                    <div>
+			                        <div class="input-group mb-3">
+			                            <div class="input-group-prepend">
+			                                <span class="input-group-text">
+			                                    <i class="icon-user"></i>
+			                                </span>
+			                            </div>
+										{{ form.username }}
 			                        </div>
-			                        <div class="card-action">
-			                           <button type="submit" class="btn btn-success btn-round">Entrar</button>
-			                           &nbsp; &nbsp;
-			                       		<a data-toggle="modal" href="#register">Crear una nueva cuenta</a>
+			                   </div>
 
+			                    <div>
+			                        <div class="input-group mb-3">
+			                            <div class="input-group-prepend">
+			                                <span class="input-group-text">
+			                                    <i class="icon-lock"></i>
+			                                </span>
+			                            </div>	
+										{{ form.password }}
 			                        </div>
-		                    	</form>
-		                </div>
+			                    </div>
+			               	</div>
+
+			                <div class="card-action">
+			                    <button type="submit" class="btn btn-success btn-round">Entrar</button>
+			                    &nbsp; &nbsp;
+			                    <a data-toggle="modal" href="#register">Crear una nueva cuenta</a>
+			                </div>
+
+		                </form>
+		            </div>
 		        </div>
 		    </div>
 		</td>

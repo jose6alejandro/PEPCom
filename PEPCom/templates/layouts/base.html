@@ -52,12 +52,23 @@
 					    <script type="text/javascript">
 					            Swal.fire({
 					                "title": "{{message}}",
+					                "text": "{{message.text}}",
 					                "icon": "{{message.tags}}",
 					                "iconColor": "#31ce36",
 					                "confirmButtonClass" : "btn btn-round",
 					                "confirmButtonColor": "#31ce36"
 					            })
 					    </script>
+					{% elif message.tags == "info" %}
+					    <script type="text/javascript">
+					            Swal.fire({
+					                "title": "{{message}}",
+					                "icon": "{{message.tags}}",
+					                "iconColor": "#4A89CF",
+					                "confirmButtonClass" : "btn btn-round",
+					                "confirmButtonColor": "#4A89CF"
+					            })
+					    </script>					    
 					{% else %}
 					    <script type="text/javascript">
 					            Swal.fire({
