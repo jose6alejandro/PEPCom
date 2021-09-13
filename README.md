@@ -1,25 +1,26 @@
 # PEPCom
 Plataforma para Entrenar el Pensamiento Computacional (PEPCom)
 
-## En el desarrollo de este proyecto se utiliza
-- Python 3.6.9
-- Django 3.2.5
-- SQlite3 
-- sweetalert2
-- [Appseed](https://appseed.us/admin-dashboards/django-dashboard-atlantis-dark) (Template) 
-## Instalar repositorio
+## Configuración
+### Instalar repositorio
 ```bash
 $ git clone https://github.com/jose6alejandro/PEPCom.git
 ```
-## Ejecutar aplicación
+### Instalar requisitos
 ```bash
-$ cd PEPCom/PEPCom/
-$ python3 manage.py runserver # default port 8000
+$ cd PEPCom/
+$ pip3 install -r requirements.txt
 ```
-## Acceder en el navegador: 
-http://localhost:8000/accounts/login/
+## Ejecución
+```bash
+$ python3 PEPCom/manage.py runserver # default port 8000
+```
+## Abrir en el navegador 
+http://localhost:8000
 
+## Acceso a practica creada de prueba (estudiante)
+Código: PR1-ULA
 
-## Capturas de la aplicación
+## Capturas
 Proximamente
 
