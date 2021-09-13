@@ -15,8 +15,11 @@ $ pip3 install -r requirements.txt
 ```bash
 $ python3 PEPCom/manage.py runserver # default port 8000
 ```
-## Acceso en el navegador 
+## Abrir en el navegador 
 http://localhost:8000
+
+## Acceso a practica creada de prueba (estudiante)
+Código: PR1-ULA
 
 ## Capturas
 Proximamente
