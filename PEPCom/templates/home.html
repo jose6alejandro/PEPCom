@@ -15,7 +15,25 @@
 			<div class="content">
 			<div class="page-inner">
 			<div class="page-header">
-				<h1>Proximamente</h1>
+				{% if request.user.user_profile_set.get.user_role %}
+					<div class="text-left">
+
+						<h2>{{request.user.first_name}}, siempre es un buen momento para practicar.</h2>		
+					</div>
+
+					<div class="text-center">
+						<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+						<lottie-player src="https://assets8.lottiefiles.com/packages/lf20_HpFqiS.json"  background="transparent"  speed="0.6"  style="width: 85%; height: 85%;"  loop  autoplay></lottie-player>					
+					</div>
+				{% else %}
+					<div class="text-left">
+						<h2>¿Primero analizamos cómo van los estudiantes o diseñamos más problemas?</h2>		
+					</div>	
+					<div class="text-center">
+						<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+						<lottie-player src="https://assets10.lottiefiles.com/packages/lf20_r6ahcm9f.json"  background="transparent"  speed="1"  style="width: 85%; height: 85%;"  loop  autoplay></lottie-player>				
+					</div>								
+				{% endif %}
 			</div>
 			</div>
 
@@ -29,4 +47,6 @@
 
 {% include 'includes/scripts.html' %}
 <!-- Specific JS goes HERE -->
-{% block javascripts %}{% endblock javascripts %}
+{% block javascripts %}
+
+{% endblock javascripts %}
