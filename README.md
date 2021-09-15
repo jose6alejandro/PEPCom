@@ -18,7 +18,7 @@ $ python3 PEPCom/manage.py runserver # default port 8000
 ## Abrir en el navegador 
 http://localhost:8000
 
-## Acceso a practica creada de prueba (estudiante)
+## Acceso a la práctica de prueba creada (estudiante)
 Código: PR1-ULA
 
 ## Capturas
