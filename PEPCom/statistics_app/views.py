@@ -77,7 +77,8 @@ def all_stats(request):
     
     code = request.user.user_profile_set.get().access_code 
     students = User_Profile.objects.filter(access_code=code, user_role=True)
-
+    t_students = User_Profile.objects.filter(access_code=code, user_role=True).count()
+    
     skills = [0,0,0,0,0]
     total_skills_value = 0
     performance = [0,0,0,0,0,0,0,0,0,0,0,0]
@@ -102,7 +103,8 @@ def all_stats(request):
            performance[8] += students[i].user.my_performance_set.get().september
            performance[9] += students[i].user.my_performance_set.get().october
            performance[10] += students[i].user.my_performance_set.get().november
-           performance[11] += students[i].user.my_performance_set.get().december        
+           performance[11] += students[i].user.my_performance_set.get().december 
+    
         except:
             pass
 
@@ -121,6 +123,7 @@ def all_stats(request):
                                             "skill": skills,
                                             "performance": performance,
                                             "total": total_skills_value,
+                                            "t_students": t_students,
                                             "year": year, 
                                             "title": title
                                             })
