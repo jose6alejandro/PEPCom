@@ -21,6 +21,17 @@ http://localhost:8000
 ## Acceso a la práctica de prueba creada (estudiante)
 Código: PR1-ULA
 
-## Capturas
-Proximamente
+## Abrir cuestionario de usabilidad
+https://forms.gle/GNoKSRKJ3v3QofqW6
+
+## Algunas capturas
+
+### 1. Acceso
+<img src="PEPCom/static/assets/img/screenshots/c1.png" width="80%" height="80%"/>
+
+### 2. Estudiante
+<img src="PEPCom/static/assets/img/screenshots/c2.png" width="80%" height="80%"/>
+
+### 3. Profesor
+<img src="PEPCom/static/assets/img/screenshots/c3.png" width="80%" height="80%"/>
 
