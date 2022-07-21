@@ -1,5 +1,5 @@
 # EPCom
-una aplicación Entrenar el Pensamiento Computacional (EPCom)
+una aplicación para Entrenar el Pensamiento Computacional (EPCom)
 
 ## Configuración
 ### Instalar repositorio
